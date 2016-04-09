@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorytmy_Zaawansowane.Classes
 {
-    class Box
+    public class Box
     {
         private double boxHeight { get; set; }
         private double boxWidth { get; set; }

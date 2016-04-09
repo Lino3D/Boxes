@@ -8,7 +8,7 @@ namespace Algorytmy_Zaawansowane.Classes
 {
     public static class Algorithm
     {
-        public int[,] NajdluzszyWspolnyPodciag( List<Box> A, List<Box> B)
+        public static int[,] NajdluzszyWspolnyPodciag( List<Box> A, List<Box> B)
         {
             if( A.Count() != B.Count() )
                 throw( new Exception("Ilosc pudelek w obu listach sie nie zgadza"));

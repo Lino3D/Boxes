@@ -8,37 +8,37 @@ namespace Algorytmy_Zaawansowane.Classes
 {
     public class BoxList
     {
-        private List<Box> BoxList = new List<Box>();
+        public List<Box> ListBox = new List<Box>();
 
         public void DodajPudelka(Box box)
         {
             if (box != null)
-                BoxList.Add(box);
+                ListBox.Add(box);
         }
 
         public void DodajPudelka(List<Box> lstbox)
         {
             if (lstbox != null)
                 foreach (var item in lstbox)
-                    BoxList.Add(item);
+                    ListBox.Add(item);
         }
 
         public int GetBoxNumber()
         {
-            return BoxList.Count;
+            return ListBox.Count;
         }
 
         public List<Box> GetBoxList()
         {
-            return BoxList;
+            return ListBox;
         }
 
         public void SortujPudelka(bool SortujPoWysokosci)
         {
             if (SortujPoWysokosci)
-                QuicksortHeight(BoxList, 0, BoxList.Count - 1);
+                QuicksortHeight(ListBox, 0, ListBox.Count - 1);
             else
-                QuicksortWidht(BoxList, 0, BoxList.Count - 1);
+                QuicksortWidht(ListBox, 0, ListBox.Count - 1);
         }
 
 
