@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using Algorytmy_Zaawansowane.Classes;
+using System.Globalization;
 
 namespace Algorytmy_Zaawansowane
 {
@@ -23,6 +24,8 @@ namespace Algorytmy_Zaawansowane
     public partial class MainWindow : MetroWindow
     {
         List<Box> Boxes = new List<Box>();
+        char decimalsperator = Convert.ToChar(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+
         public MainWindow()
         {
             InitializeComponent();
@@ -40,16 +43,42 @@ namespace Algorytmy_Zaawansowane
                 string filename = dlg.FileName;
                 System.IO.StreamReader file = new System.IO.StreamReader(filename);
                 string line = file.ReadToEnd();
+                line = line.Replace('\r', ' ');
+
+                if (decimalsperator == ',') { line = line.Replace('.', ','); }
+             
+
                 List<string> stringboxes = line.Split('\n').ToList();
+                    
                 int x = 5;
 
                 foreach(string s in stringboxes)
                 {
-                    
-                    List<string> stringbox = s.Split('/').ToList();
-                  
+                    if (s.Contains("/"))
+                    {
+                        List<string> stringbox = s.Split('/').ToList();
 
-                    Box box = new Box();
+                        double height;
+                        double.TryParse(stringbox[0], out height);
+
+                        double width;
+                        double.TryParse(stringbox[1], out width);
+
+                        if (height != 0 & width != 0)
+                        {
+                            Box box = new Box(height, width);
+                            Boxes.Add(box);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Errors in text file");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Errors in text file");
+                    }
+                   
                 }
 
 
