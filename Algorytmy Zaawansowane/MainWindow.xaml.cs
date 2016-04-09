@@ -70,7 +70,20 @@ namespace Algorytmy_Zaawansowane
 
         private void _Start_Click(object sender, RoutedEventArgs e)
         {
+            if (Boxes.GetBoxNumber() == 0)
+                return;
+            Boxes.UstawPionowo();
 
+            BoxList A = new BoxList();
+            BoxList B = new BoxList();
+
+            A.DodajPudelka(Boxes.GetBoxList());
+            B.DodajPudelka(Boxes.GetBoxList());
+
+            A.SortujPudelka(true);
+            B.SortujPudelka(false);
+
+            var tmp = Algorithm.NajdluzszyWspolnyPodciag(A.GetBoxList(), B.GetBoxList());
         }
     }
 }
