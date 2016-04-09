@@ -33,6 +33,17 @@ namespace Algorytmy_Zaawansowane.Classes
                 boxWidth = value;
             }
         }
+        public Box(double a, double b)
+        {
+            boxHeight = a;
+            boxWidth = b;
+        }
+        public Box()
+        {
+            boxHeight = 0;
+            boxWidth = 0;
+        }
+
 
         public override bool Equals(System.Object obj)
         {
