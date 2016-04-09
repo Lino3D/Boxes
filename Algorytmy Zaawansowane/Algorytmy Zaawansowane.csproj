@@ -118,6 +118,7 @@
   <ItemGroup>
     <Folder Include="Classes\" />
     <Folder Include="Functions\" />
+    <Folder Include="packages\" />
     <Folder Include="Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
