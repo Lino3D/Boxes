@@ -48,7 +48,10 @@ namespace Algorytmy_Zaawansowane
                 if ((BoxesTmp = InputOutput.InitializeList(line)) == null)
                     MessageBox.Show("Errors in text file");
                 else
+                {
                     Boxes.DodajPudelka(BoxesTmp);
+                    BoxView.ItemsSource = Boxes.ListBox;
+                        }
   
             }
         }
