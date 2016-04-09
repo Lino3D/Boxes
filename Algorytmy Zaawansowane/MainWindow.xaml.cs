@@ -23,8 +23,8 @@ namespace Algorytmy_Zaawansowane
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        List<Box> Boxes = new List<Box>();
-       
+
+        BoxList Boxes = new BoxList();
 
         public MainWindow()
         {
@@ -33,6 +33,7 @@ namespace Algorytmy_Zaawansowane
 
         private void Open_Click(object sender, RoutedEventArgs e)
         {
+            List<Box> BoxesTmp;
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
             dlg.DefaultExt = ".txt";
@@ -44,8 +45,10 @@ namespace Algorytmy_Zaawansowane
                 System.IO.StreamReader file = new System.IO.StreamReader(filename);
                 string line = file.ReadToEnd();
 
-                if ((Boxes = InputOutput.InitializeList(line)) == null)
+                if ((BoxesTmp = InputOutput.InitializeList(line)) == null)
                     MessageBox.Show("Errors in text file");
+                else
+                    Boxes.DodajPudelka(BoxesTmp);
   
             }
         }
@@ -62,6 +65,11 @@ namespace Algorytmy_Zaawansowane
                 string filename = dlg.FileName;
             }
 
+
+        }
+
+        private void _Start_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
