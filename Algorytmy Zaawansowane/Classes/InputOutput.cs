@@ -4,13 +4,14 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace Algorytmy_Zaawansowane.Classes
 {
     public static class InputOutput
     {
 
-        public static List<Box> InitializeList (string line)
+        public static List<Box> InitializeList(string line)
         {
             char decimalsperator = Convert.ToChar(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
             List<Box> Boxes = new List<Box>();
@@ -42,5 +43,6 @@ namespace Algorytmy_Zaawansowane.Classes
             }
             return Boxes;
         }
+  
     }
 }

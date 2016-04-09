@@ -25,7 +25,9 @@ namespace Algorytmy_Zaawansowane
     {
 
         BoxList Boxes = new BoxList();
-
+        int spacingLeft = 0;
+        int spacingTop = 0;
+      
         public MainWindow()
         {
             InitializeComponent();
@@ -50,11 +52,17 @@ namespace Algorytmy_Zaawansowane
                 else
                 {
                     Boxes.DodajPudelka(BoxesTmp);
+                    Boxes.UstawPionowo();
                     BoxView.ItemsSource = Boxes.ListBox;
-                        }
+                    fillCanvas();
+                 
+
+
+                 }
   
             }
         }
+    
 
         private void save_as_Click(object sender, RoutedEventArgs e)
         {
@@ -87,6 +95,47 @@ namespace Algorytmy_Zaawansowane
             B.SortujPudelka(false);
 
             var tmp = Algorithm.NajdluzszyWspolnyPodciag(A.GetBoxList(), B.GetBoxList());
+        }
+        private void fillCanvas()
+        {
+            int maxHeight = 0;
+            int maxWidth = 0;
+
+
+            foreach (Box box in Boxes.ListBox)
+            {
+                Rectangle r = new Rectangle();
+                r.Height = box.Height * 4;
+                r.Width = box.Width * 4;
+                r.Stroke = Brushes.Black;
+                r.StrokeThickness = 2;
+
+                if (r.Height > maxHeight)
+                    maxHeight = (int)r.Height;
+                if (r.Width > maxWidth)
+                    maxWidth = (int)r.Width;
+                if (spacingLeft+maxWidth > Main.Width)
+                {
+                    spacingLeft = 0;
+                    spacingTop = maxHeight + 10;
+                }
+                Canvas.SetLeft(r, spacingLeft);
+                spacingLeft += (int)(r.Width + 10);
+                Canvas.SetTop(r, spacingTop);
+                MyCanvas.Children.Add(r);
+            }
+        }
+
+        private void Main_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            reDrawAll();
+        }
+        public void reDrawAll()
+        {
+            spacingLeft = 0;
+            spacingTop = 0;
+            MyCanvas.Children.Clear();
+            fillCanvas();
         }
     }
 }

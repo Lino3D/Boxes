@@ -6,8 +6,9 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:Algorytmy_Zaawansowane"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
-        ResizeMode="CanResizeWithGrip">
+        x:Name="Main"
+        Title="Pudełka" Height="350" Width="525"
+        ResizeMode="CanResizeWithGrip" SizeChanged="Main_SizeChanged">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -47,7 +48,7 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" Height="auto" Margin="10,0,0,0" VerticalAlignment="Stretch" Width="auto" Grid.Row="1">
             <TabItem Header="TabItem">
                 <Grid Margin="0,-2,0,0">
-                    <ListView x:Name="BoxView" Margin="10,10,10,114">
+                    <ListView x:Name="BoxView" Margin="10">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Height" Width="auto" DisplayMemberBinding="{Binding Height}" />
@@ -58,7 +59,11 @@
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
-                <Grid Margin="0,-2,0,0"/>
+                <Grid Margin="0,-2,0,0">
+                    <Canvas x:Name="MyCanvas" Margin="0,0,0,138">
+                    
+                    </Canvas>
+                </Grid>
             </TabItem>
 
 
