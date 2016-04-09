@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using Algorytmy_Zaawansowane.Classes;
 
 namespace Algorytmy_Zaawansowane
 {
@@ -21,6 +22,7 @@ namespace Algorytmy_Zaawansowane
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        List<Box> Boxes = new List<Box>();
         public MainWindow()
         {
             InitializeComponent();
@@ -36,6 +38,22 @@ namespace Algorytmy_Zaawansowane
             if (result == true)
             {
                 string filename = dlg.FileName;
+                System.IO.StreamReader file = new System.IO.StreamReader(filename);
+                string line = file.ReadToEnd();
+                List<string> stringboxes = line.Split('\n').ToList();
+                int x = 5;
+
+                foreach(string s in stringboxes)
+                {
+                    
+                    List<string> stringbox = s.Split('/').ToList();
+                  
+
+                    Box box = new Box();
+                }
+
+
+
             }
         }
 
