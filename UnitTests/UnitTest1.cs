@@ -11,5 +11,11 @@ namespace UnitTests
         {
 
         }
+
+        [TestMethod]
+        public void Algorithm()
+        {
+
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace Algorytmy_Zaawansowane.Classes
     {
         public List<Box> ListBox = new List<Box>();
 
+
         public void DodajPudelka(Box box)
         {
             if (box != null)
