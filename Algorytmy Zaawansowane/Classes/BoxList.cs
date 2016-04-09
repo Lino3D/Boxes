@@ -33,6 +33,7 @@ namespace Algorytmy_Zaawansowane.Classes
             return ListBox;
         }
 
+
         public void SortujPudelka(bool SortujPoWysokosci)
         {
             if (SortujPoWysokosci)
@@ -41,7 +42,16 @@ namespace Algorytmy_Zaawansowane.Classes
                 QuicksortWidht(ListBox, 0, ListBox.Count - 1);
         }
 
-
+        public void UstawPionowo()
+        {
+            foreach( var item in ListBox)
+                if( item.Height < item.Width)
+                {
+                    var tmp = item.Height;
+                    item.Height = item.Width;
+                    item.Width = tmp;
+                }
+        }
         private static void QuicksortHeight(List<Box> elements, int left, int right)
         {
             int i = left, j = right;
