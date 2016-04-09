@@ -75,6 +75,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="packages\MahApps.Metro.Resources.0.5.0.0\content\Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +103,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="packages\MahApps.Metro.1.2.4.0\MahApps.Metro.1.2.4.0.nupkg" />
+    <None Include="packages\MahApps.Metro.1.2.4.0\tools\install.ps1" />
+    <Resource Include="packages\MahApps.Metro.Resources.0.5.0.0\content\Resources\Entypo.ttf" />
+    <None Include="packages\MahApps.Metro.Resources.0.5.0.0\MahApps.Metro.Resources.0.5.0.0.nupkg" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -117,9 +125,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Functions\" />
-    <Folder Include="packages\" />
+    <Folder Include="packages\Functions\" />
     <Folder Include="Windows\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\MahApps.Metro.1.2.4.0\lib\net40\MahApps.Metro.dll" />
+    <Content Include="packages\MahApps.Metro.1.2.4.0\lib\net40\MahApps.Metro.pdb" />
+    <Resource Include="packages\MahApps.Metro.Resources.0.5.0.0\content\Resources\Entypo-license.txt" />
+    <Resource Include="packages\MahApps.Metro.Resources.0.5.0.0\content\Resources\WindowsIcons-license.txt" />
+    <Resource Include="packages\MahApps.Metro.1.2.4.0\lib\net40\MahApps.Metro.XML" />
+    <Content Include="packages\MahApps.Metro.1.2.4.0\lib\net40\System.Windows.Interactivity.dll" />
+    <Content Include="packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll" />
+    <Content Include="packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.pdb" />
+    <Resource Include="packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.XML" />
+    <Content Include="packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
