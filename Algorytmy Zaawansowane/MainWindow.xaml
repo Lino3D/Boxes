@@ -42,7 +42,10 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Help" />
+            <MenuItem Header="_Help" Click="MenuItem_Click" >
+                <MenuItem x:Name="About" Header="About" Click="About_Click"/>
+                <MenuItem Header="Opis wejścia/wyjścia"/>
+            </MenuItem>
             <MenuItem x:Name="_Start" Header="Start" Click="_Start_Click" />
         </Menu>
         <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" Height="auto" Margin="10,0,0,0" VerticalAlignment="Stretch" Width="auto" Grid.Row="1">

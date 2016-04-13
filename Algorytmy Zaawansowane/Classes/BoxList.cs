@@ -24,6 +24,11 @@ namespace Algorytmy_Zaawansowane.Classes
                     ListBox.Add(item);
         }
 
+        public void CzyscListe()
+        {
+            ListBox.Clear();
+        }
+
         public int GetBoxNumber()
         {
             return ListBox.Count;
@@ -32,6 +37,17 @@ namespace Algorytmy_Zaawansowane.Classes
         public List<Box> GetBoxList()
         {
             return ListBox;
+        }
+
+        public void SetBoxList( List<Box> val)
+        {
+            ListBox.Clear();
+            ListBox = val;
+        }
+
+        public void ReorderBoxList()
+        {
+            ListBox.Reverse();
         }
 
 

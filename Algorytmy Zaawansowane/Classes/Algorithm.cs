@@ -8,11 +8,12 @@ namespace Algorytmy_Zaawansowane.Classes
 {
     public static class Algorithm
     {
-        public static int[,] NajdluzszyWspolnyPodciag( List<Box> A, List<Box> B)
+        public static List<Box> NajdluzszyWspolnyPodciag( List<Box> A, List<Box> B)
         {
             if( A.Count() != B.Count() )
                 throw( new Exception("Ilosc pudelek w obu listach sie nie zgadza"));
             int n = A.Count();
+            n++;
             int[,] C = new int[n,n];
             
             for( int i = 0; i < n; i++)
@@ -24,14 +25,55 @@ namespace Algorytmy_Zaawansowane.Classes
             {
                 for( int j = 1; j < n; j++)
                 {
-                    if( A.ElementAt(i).Equals(B.ElementAt(j)))
+                    if( A.ElementAt(i-1).Equals(B.ElementAt(j-1)))
                         C[i,j] = C[i-1,j-1]+1;
                     else
                         C[i,j] = Math.Max( C[i-1,j], C[i,j-1]);
                 }
             }
 
-            return C;
+
+            return ZnajdzCiag(C, A, B, n);
+        }
+
+        private static List<Box> ZnajdzCiag( int[,] tab, List<Box> A, List<Box> B, int n)
+        {
+            List<Box> ret = new List<Box>();
+            int val;
+            //for (int i = n - 1; i > 0; i--)
+            //    for (int j = n - 1; j > 0; j--)
+            //    {
+            int i = n - 1;
+            int j = n - 1;
+            while (!(i == 0 && j == 0))
+            {
+                val = tab[i, j];
+                if (tab[i - 1, j] == val && i > 0)
+                {
+                    //przejdz
+                    i--;
+                    continue;
+                }
+                if (tab[i, j - 1] == val && j > 0)
+                {
+                    //przejdz
+                    j--;
+                    continue;
+                }
+
+                ret.Add(A.ElementAt(i-1));
+                if (i > 0)
+                    i--;
+                if (j > 0)
+                    j--;
+
+
+            }
+           //     }
+
+
+
+                return ret;
         }
 
 

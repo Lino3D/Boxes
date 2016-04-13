@@ -51,6 +51,7 @@ namespace Algorytmy_Zaawansowane
                     MessageBox.Show("Errors in text file");
                 else
                 {
+                    Boxes.CzyscListe();
                     Boxes.DodajPudelka(BoxesTmp);
                     Boxes.UstawPionowo();
                     BoxView.ItemsSource = Boxes.ListBox;
@@ -95,6 +96,11 @@ namespace Algorytmy_Zaawansowane
             B.SortujPudelka(false);
 
             var tmp = Algorithm.NajdluzszyWspolnyPodciag(A.GetBoxList(), B.GetBoxList());
+            Boxes.SetBoxList(tmp);
+            Boxes.ReorderBoxList();
+            BoxView.ItemsSource = Boxes.ListBox;
+            reDrawAll();
+            
         }
         private void fillCanvas()
         {
@@ -136,6 +142,17 @@ namespace Algorytmy_Zaawansowane
             spacingTop = 0;
             MyCanvas.Children.Clear();
             fillCanvas();
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            OpisWejsciaWyjsciaWindow help = new OpisWejsciaWyjsciaWindow();
+            help.ShowDialog();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
