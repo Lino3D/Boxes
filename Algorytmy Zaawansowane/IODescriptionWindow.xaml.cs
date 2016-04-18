@@ -18,9 +18,9 @@ namespace Algorytmy_Zaawansowane
     /// <summary>
     /// Interaction logic for HelpWindow.xaml
     /// </summary>
-    public partial class HelpWindow : MetroWindow
+    public partial class OpisWejsciaWyjsciaWindow : MetroWindow
     {
-        public HelpWindow()
+        public OpisWejsciaWyjsciaWindow()
         {
             InitializeComponent();
         }

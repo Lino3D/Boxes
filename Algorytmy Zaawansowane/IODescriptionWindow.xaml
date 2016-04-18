@@ -1,0 +1,23 @@
+﻿<Controls:MetroWindow x:Class="Algorytmy_Zaawansowane.OpisWejsciaWyjsciaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:Algorytmy_Zaawansowane"
+        mc:Ignorable="d"
+        Title="Opis Wejścia/Wyjścia" Height="257" Width="300" ShowInTaskbar="False">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <ScrollViewer>
+            <TextBlock TextWrapping="Wrap" Height="676" Width="262" TextAlignment="Justify"><Run FontWeight="Bold" FontSize="16" Text="Input:"/><LineBreak/><Run Text="Na wejściu otrzymujemy dane w pliku .txt z listą danych o pudełkach, które są potrzebne do rozwiązania zadania. Lista reprezentowana jest przez kolejne linijki pliku. A dane każdego pudełka (tj. długość i szerokość) oddzielone znakiem dzielenia /. Wartość długości i szerokości reprezentowana jest przez liczbę z podwójną prezycją (tj. double) wpisywaną z kropką jako granicą liczby całkowitej i ułamkowej. Możliwe jest występowanie spacji, dla lepszej czytelności pliku, jednkże będą one pomijane. Przykład formatowania pliku input.txt:"/><LineBreak/><Run/><LineBreak/><Run Text="15.2 / 15.442"/><LineBreak/><Run Text="2.1 / 1.9"/><LineBreak/><Run Text="4.34 / 3.56"/><LineBreak/><Run Text="13.1 / 13.55"/><LineBreak/><LineBreak/><Run FontWeight="Bold" FontSize="16" Text="Output:"/><LineBreak/><Run Text="Plik wyjściowy jest w formacie .txt. Jego zawartością jest rozwiązanie do zadanego problemu, czyli lista reprezentująca największy zbiór pudełek, takich, których można zapakować jedno w drugie. Sposób reprezentacji poszczególnych elementów nie różni się od pliku wejściowego. Tj. każda kolejna linijka to kolejne pudełko, zaczynając z największym pudełkiem od góry, do najmniejszego na dole. Z czego każde pudełko ma podany rozmiar oddzielony znakiem dzielenia /. A część całkowita jest oddzielona od części ułamkowej kropką. Przykładowy plik wyjściowy output.txt:"/><LineBreak/><Run/><LineBreak/><Run Text="15.2 / 15.442"/><LineBreak/><Run Text="13.1 / 13.55"/><LineBreak/><Run Text="4.34 / 3.56"/><LineBreak/><Run Text="2.1 / 1.9"/></TextBlock>
+        </ScrollViewer>
+    </Grid>
+</Controls:MetroWindow>
+

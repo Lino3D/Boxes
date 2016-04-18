@@ -24,6 +24,14 @@ namespace Algorytmy_Zaawansowane.Classes
                     ListBox.Add(item);
         }
 
+        public void StworzListeUnused(List<Box> AllBoxes, List<Box> UsedBoxes)
+        {
+            ListBox.Clear();
+            foreach (var item in AllBoxes)
+                if (!UsedBoxes.Contains(item))
+                    ListBox.Add(item);
+        }
+
         public void CzyscListe()
         {
             ListBox.Clear();

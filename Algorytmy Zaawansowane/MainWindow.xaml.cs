@@ -25,8 +25,10 @@ namespace Algorytmy_Zaawansowane
     {
 
         BoxList Boxes = new BoxList();
+        BoxList UnusedBoxes = new BoxList();
         int spacingLeft = 0;
         int spacingTop = 0;
+        bool IsCalculated = false;
       
         public MainWindow()
         {
@@ -55,7 +57,9 @@ namespace Algorytmy_Zaawansowane
                     Boxes.DodajPudelka(BoxesTmp);
                     Boxes.UstawPionowo();
                     BoxView.ItemsSource = Boxes.ListBox;
+                   
                     fillCanvas();
+                    IsCalculated = false;
                  
 
 
@@ -82,6 +86,8 @@ namespace Algorytmy_Zaawansowane
 
         private void _Start_Click(object sender, RoutedEventArgs e)
         {
+            if (IsCalculated)
+                return;
             if (Boxes.GetBoxNumber() == 0)
                 return;
             Boxes.UstawPionowo();
@@ -96,10 +102,12 @@ namespace Algorytmy_Zaawansowane
             B.SortujPudelka(false);
 
             var tmp = Algorithm.NajdluzszyWspolnyPodciag(A.GetBoxList(), B.GetBoxList());
+            UnusedBoxes.StworzListeUnused(Boxes.GetBoxList(), tmp);
             Boxes.SetBoxList(tmp);
             Boxes.ReorderBoxList();
             BoxView.ItemsSource = Boxes.ListBox;
             reDrawAll();
+            IsCalculated = true;
             
         }
         private void fillCanvas()
@@ -146,11 +154,22 @@ namespace Algorytmy_Zaawansowane
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            OpisWejsciaWyjsciaWindow help = new OpisWejsciaWyjsciaWindow();
+            HelpWindow help = new HelpWindow();
             help.ShowDialog();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            OpisWejsciaWyjsciaWindow IODescription = new OpisWejsciaWyjsciaWindow();
+            IODescription.ShowDialog();
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

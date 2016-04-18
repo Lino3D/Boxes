@@ -48,13 +48,13 @@ namespace Algorytmy_Zaawansowane.Classes
             while (!(i == 0 && j == 0))
             {
                 val = tab[i, j];
-                if (tab[i - 1, j] == val && i > 0)
+                if (i > 0 && tab[i - 1, j] == val)// && i > 0)
                 {
                     //przejdz
                     i--;
                     continue;
                 }
-                if (tab[i, j - 1] == val && j > 0)
+                if (j> 0 && tab[i, j - 1] == val )//&& j > 0)
                 {
                     //przejdz
                     j--;
