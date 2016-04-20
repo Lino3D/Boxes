@@ -18,6 +18,9 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/boxesimg.jpg" Stretch="Uniform"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="49*"/>
             <RowDefinition Height="270*"/>
@@ -52,9 +55,9 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" Height="auto" Margin="10,0,0,0" VerticalAlignment="Stretch" Width="auto" Grid.Row="1">
             <TabItem Header="List">
                 <Grid Margin="0,-2,0,0">
-                    <ListView x:Name="BoxView" Margin="10,32,509,10">
+                    <ListView x:Name="BoxView" Margin="10,32,0,10" HorizontalAlignment="Left" Width="123">
                         <ListView.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.9">
                                 <GradientStop Color="#FF72A1E4" Offset="0"/>
                                 <GradientStop Color="#FF4A8BEA" Offset="1"/>
                             </LinearGradientBrush>
@@ -72,9 +75,9 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Label Content="Unused boxes:" HorizontalAlignment="Left" Margin="154,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.474,-1.308"/>
-                        <ListView x:Name="UnusedBoxesView" HorizontalAlignment="Left" Height="188" Margin="154,41,0,0" VerticalAlignment="Top" Width="118" ItemsSource="{Binding Boxes.GetBoxList();}">
+                        <ListView x:Name="UnusedBoxesView" HorizontalAlignment="Left" Height="188" Margin="148,41,0,0" VerticalAlignment="Top" Width="118" ItemsSource="{Binding Boxes.GetBoxList();}">
                             <ListView.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.9">
                                     <GradientStop Color="#FFE0D8D8" Offset="0"/>
                                     <GradientStop Color="#FFF73B3B" Offset="1"/>
                                 </LinearGradientBrush>
@@ -89,6 +92,9 @@
 
                         </ListView>
                         <WrapPanel HorizontalAlignment="Left" Height="148" Margin="302,50,0,0" VerticalAlignment="Top" Width="172">
+                            <WrapPanel.Background>
+                                <SolidColorBrush Color="White" Opacity="0.5"/>
+                            </WrapPanel.Background>
                             <Label Content="Time taken:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-2.474,-1.308"/>
                             <Label x:Name="TimeTakenLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94"/>
                             <Label Content="Boxes:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-2.474,-1.308" Width="43"/>
@@ -101,7 +107,7 @@
                         <Label Content="Calculated List:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.474,-1.308"/>
                         <ListView x:Name="CalculatedBoxView" HorizontalAlignment="Left" Height="188" Margin="10,41,0,0" VerticalAlignment="Top" Width="133" ItemsSource="{Binding Boxes.GetBoxList();}">
                             <ListView.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.9">
                                     <GradientStop Color="#FF9DDA53" Offset="0"/>
                                     <GradientStop Color="#FFF8FFF5" Offset="1"/>
                                     <GradientStop Color="#FF76D656" Offset="0.454"/>
