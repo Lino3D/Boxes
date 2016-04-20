@@ -28,6 +28,7 @@ namespace Algorytmy_Zaawansowane
     {
         BoxList Boxes = new BoxList();
         BoxList UnusedBoxes = new BoxList();
+        BoxList CalculatedBoxes = new BoxList();
         int spacingLeft = 0;
         int spacingTop = 0;
         bool IsCalculated = false;
@@ -39,6 +40,7 @@ namespace Algorytmy_Zaawansowane
             InitializeComponent();
             BoxView.ItemsSource = Boxes.GetBoxList();
             UnusedBoxesView.ItemsSource = UnusedBoxes.GetBoxList();
+            CalculatedBoxView.ItemsSource = CalculatedBoxes.GetBoxList();
             GridView = new GridViewModel();
             this.DataContext = GridView;
             GridView.IsVisible = false;
@@ -124,8 +126,8 @@ namespace Algorytmy_Zaawansowane
         private void FillData(string watchValue, ObservableCollection<Box> tmp)
         {
             UnusedBoxes.StworzListeUnused(Boxes.GetBoxList(), tmp);
-            Boxes.SetBoxList(tmp);
-            Boxes.ReorderBoxList();
+            CalculatedBoxes.SetBoxList(tmp);
+            CalculatedBoxes.ReorderBoxList();
 
             // Filling labels
             int used = Boxes.GetBoxNumber();
