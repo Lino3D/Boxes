@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace Algorytmy_Zaawansowane.Classes
 {
     public static class Algorithm
     {
-        public static List<Box> NajdluzszyWspolnyPodciag( List<Box> A, List<Box> B)
+        public static ObservableCollection<Box> NajdluzszyWspolnyPodciag( ObservableCollection<Box> A, ObservableCollection<Box> B)
         {
             if( A.Count() != B.Count() )
                 throw( new Exception("Ilosc pudelek w obu listach sie nie zgadza"));
@@ -36,9 +37,9 @@ namespace Algorytmy_Zaawansowane.Classes
             return ZnajdzCiag(C, A, B, n);
         }
 
-        private static List<Box> ZnajdzCiag( int[,] tab, List<Box> A, List<Box> B, int n)
+        private static ObservableCollection<Box> ZnajdzCiag( int[,] tab, ObservableCollection<Box> A, ObservableCollection<Box> B, int n)
         {
-            List<Box> ret = new List<Box>();
+            ObservableCollection<Box> ret = new ObservableCollection<Box>();
             int val;
             //for (int i = n - 1; i > 0; i--)
             //    for (int j = n - 1; j > 0; j--)

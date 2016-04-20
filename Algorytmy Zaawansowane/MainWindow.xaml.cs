@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using Algorytmy_Zaawansowane.Classes;
 using System.Globalization;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using Algorytmy_Zaawansowane.Windows;
 
 namespace Algorytmy_Zaawansowane
 {
@@ -23,21 +26,28 @@ namespace Algorytmy_Zaawansowane
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-
         BoxList Boxes = new BoxList();
         BoxList UnusedBoxes = new BoxList();
         int spacingLeft = 0;
         int spacingTop = 0;
         bool IsCalculated = false;
-      
+
+        public GridViewModel GridView { get; set; }
+        
         public MainWindow()
         {
             InitializeComponent();
+            BoxView.ItemsSource = Boxes.GetBoxList();
+            UnusedBoxesView.ItemsSource = UnusedBoxes.GetBoxList();
+            GridView = new GridViewModel();
+            this.DataContext = GridView;
+            GridView.IsVisible = false;
+            
         }
 
         private void Open_Click(object sender, RoutedEventArgs e)
         {
-            List<Box> BoxesTmp;
+            ObservableCollection<Box> BoxesTmp;
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
             dlg.DefaultExt = ".txt";
@@ -56,12 +66,10 @@ namespace Algorytmy_Zaawansowane
                     Boxes.CzyscListe();
                     Boxes.DodajPudelka(BoxesTmp);
                     Boxes.UstawPionowo();
-                    BoxView.ItemsSource = Boxes.ListBox;
                    
                     fillCanvas();
+                    GridView.IsVisible = false;
                     IsCalculated = false;
-                 
-
 
                  }
   
@@ -90,6 +98,9 @@ namespace Algorytmy_Zaawansowane
                 return;
             if (Boxes.GetBoxNumber() == 0)
                 return;
+
+         
+
             Boxes.UstawPionowo();
 
             BoxList A = new BoxList();
@@ -101,14 +112,33 @@ namespace Algorytmy_Zaawansowane
             A.SortujPudelka(true);
             B.SortujPudelka(false);
 
+            var watch = Stopwatch.StartNew();
+
             var tmp = Algorithm.NajdluzszyWspolnyPodciag(A.GetBoxList(), B.GetBoxList());
+
+            watch.Stop();
+            IsCalculated = true;
+            FillData(watch.ElapsedMilliseconds.ToString(), tmp);
+         
+        }
+        private void FillData(string watchValue, ObservableCollection<Box> tmp)
+        {
             UnusedBoxes.StworzListeUnused(Boxes.GetBoxList(), tmp);
             Boxes.SetBoxList(tmp);
             Boxes.ReorderBoxList();
-            BoxView.ItemsSource = Boxes.ListBox;
+
+            // Filling labels
+            int used = Boxes.GetBoxNumber();
+            int unused = UnusedBoxes.GetBoxNumber();
+            BoxesLabel.Content = "" + (used + unused);
+            BoxesUsedLabel.Content = "" + used;
+            BoxesUnusedLabel.Content = "" + unused;
+
+            TimeTakenLabel.Content = watchValue + " miliseconds";
+
+            // Redrawing graph
             reDrawAll();
-            IsCalculated = true;
-            
+            GridView.IsVisible = true;   
         }
         private void fillCanvas()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace Algorytmy_Zaawansowane.Classes
 {
     public class BoxList
     {
-        public List<Box> ListBox = new List<Box>();
+        public ObservableCollection<Box> ListBox = new ObservableCollection<Box>();
 
 
         public void DodajPudelka(Box box)
@@ -17,14 +18,14 @@ namespace Algorytmy_Zaawansowane.Classes
                 ListBox.Add(box);
         }
 
-        public void DodajPudelka(List<Box> lstbox)
+        public void DodajPudelka(ObservableCollection<Box> lstbox)
         {
             if (lstbox != null)
                 foreach (var item in lstbox)
                     ListBox.Add(item);
         }
 
-        public void StworzListeUnused(List<Box> AllBoxes, List<Box> UsedBoxes)
+        public void StworzListeUnused(ObservableCollection<Box> AllBoxes, ObservableCollection<Box> UsedBoxes)
         {
             ListBox.Clear();
             foreach (var item in AllBoxes)
@@ -42,15 +43,16 @@ namespace Algorytmy_Zaawansowane.Classes
             return ListBox.Count;
         }
 
-        public List<Box> GetBoxList()
+        public ObservableCollection<Box> GetBoxList()
         {
             return ListBox;
         }
 
-        public void SetBoxList( List<Box> val)
+        public void SetBoxList( ObservableCollection<Box> val)
         {
             ListBox.Clear();
-            ListBox = val;
+            foreach (var item in val)
+                ListBox.Add(item);
         }
 
         public void ReorderBoxList()
@@ -77,7 +79,7 @@ namespace Algorytmy_Zaawansowane.Classes
                     item.Width = tmp;
                 }
         }
-        private static void QuicksortHeight(List<Box> elements, int left, int right)
+        private static void QuicksortHeight(ObservableCollection<Box> elements, int left, int right)
         {
             int i = left, j = right;
             Box pivot = elements.ElementAt((left + right) / 2);
@@ -106,7 +108,7 @@ namespace Algorytmy_Zaawansowane.Classes
                 QuicksortHeight(elements, i, right);
         }
 
-        private static void QuicksortWidht(List<Box> elements, int left, int right)
+        private static void QuicksortWidht(ObservableCollection<Box> elements, int left, int right)
         {
             int i = left, j = right;
             Box pivot = elements.ElementAt((left + right) / 2);

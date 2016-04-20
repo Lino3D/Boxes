@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,10 @@ namespace Algorytmy_Zaawansowane.Classes
     public static class InputOutput
     {
 
-        public static List<Box> InitializeList(string line)
+        public static ObservableCollection<Box> InitializeList(string line)
         {
             char decimalsperator = Convert.ToChar(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-            List<Box> Boxes = new List<Box>();
+            ObservableCollection<Box> Boxes = new ObservableCollection<Box>();
             line = line.Replace('\r', ' ');
             if (decimalsperator == ',') { line = line.Replace('.', ','); }
             List<string> stringboxes = line.Split('\n').ToList();
