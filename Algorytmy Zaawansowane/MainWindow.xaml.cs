@@ -27,11 +27,13 @@ namespace Algorytmy_Zaawansowane
     public partial class MainWindow : MetroWindow
     {
         BoxList Boxes = new BoxList();
+        BoxList SortedBoxes = new BoxList();
         BoxList UnusedBoxes = new BoxList();
         BoxList CalculatedBoxes = new BoxList();
         int spacingLeft = 0;
         int spacingTop = 0;
         bool IsCalculated = false;
+       
 
         public GridViewModel GridView { get; set; }
         
@@ -69,7 +71,7 @@ namespace Algorytmy_Zaawansowane
                     Boxes.DodajPudelka(BoxesTmp);
                     Boxes.UstawPionowo();
                    
-                    fillCanvas();
+                    fillCanvas(MyCanvas,Boxes);
                     GridView.IsVisible = false;
                     IsCalculated = false;
 
@@ -121,6 +123,8 @@ namespace Algorytmy_Zaawansowane
             watch.Stop();
             IsCalculated = true;
             FillData(watch.ElapsedMilliseconds.ToString(), tmp);
+            SortedBoxes.ListBox = tmp;
+            fillCanvas(SortedCanvas, SortedBoxes);
          
         }
         private void FillData(string watchValue, ObservableCollection<Box> tmp)
@@ -142,13 +146,13 @@ namespace Algorytmy_Zaawansowane
             reDrawAll();
             GridView.IsVisible = true;   
         }
-        private void fillCanvas()
+        private void fillCanvas(Canvas X, BoxList boxes)
         {
             int maxHeight = 0;
             int maxWidth = 0;
 
 
-            foreach (Box box in Boxes.ListBox)
+            foreach (Box box in boxes.ListBox)
             {
                 Rectangle r = new Rectangle();
                 r.Height = box.Height * 4;
@@ -168,8 +172,10 @@ namespace Algorytmy_Zaawansowane
                 Canvas.SetLeft(r, spacingLeft);
                 spacingLeft += (int)(r.Width + 10);
                 Canvas.SetTop(r, spacingTop);
-                MyCanvas.Children.Add(r);
+                X.Children.Add(r);
             }
+            spacingLeft = 0;
+            spacingTop = 0;
         }
 
         private void Main_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -181,7 +187,10 @@ namespace Algorytmy_Zaawansowane
             spacingLeft = 0;
             spacingTop = 0;
             MyCanvas.Children.Clear();
-            fillCanvas();
+            SortedCanvas.Children.Clear();
+            fillCanvas(MyCanvas,Boxes);
+            if(IsCalculated==true)
+            fillCanvas(SortedCanvas, SortedBoxes);
         }
 
         private void About_Click(object sender, RoutedEventArgs e)

@@ -128,9 +128,18 @@
             </TabItem>
             <TabItem Header="Graph">
                 <Grid Margin="0,-2,0,0">
-                    <Canvas x:Name="MyCanvas" Margin="0,0,0,138">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="12*"/>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="43*"/>
+                    </Grid.RowDefinitions>
+                    <Canvas x:Name="MyCanvas" Margin="0,3,0,10" Grid.Row="1" Grid.RowSpan="1"/>
+                    <Canvas x:Name="SortedCanvas" Margin="0,10" Grid.Row="3">
 
                     </Canvas>
+                    <Label x:Name="label" Content="Unsorted" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" Grid.RowSpan="1" Grid.Row="0" Height="23" Width="59"/>
+                    <Label x:Name="label1" Content="Sorted" HorizontalAlignment="Left" Margin="0,10,0,0" Grid.Row="2" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
 
