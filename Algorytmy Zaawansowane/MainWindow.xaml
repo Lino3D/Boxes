@@ -36,15 +36,6 @@
                         </Rectangle>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="save_as"  Header="Save as" Click="save_as_Click">
-                    <MenuItem.Icon>
-                        <Rectangle  Height="20" Width="20" StrokeThickness="0">
-                            <Rectangle.Fill>
-                                <VisualBrush Visual="{StaticResource appbar_save}" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                    </MenuItem.Icon>
-                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Help" Click="MenuItem_Click" >
                 <MenuItem x:Name="About" Header="About" Click="About_Click"/>

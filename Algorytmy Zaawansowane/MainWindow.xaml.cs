@@ -18,6 +18,7 @@ using System.Globalization;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Algorytmy_Zaawansowane.Windows;
+using System.ComponentModel;
 
 namespace Algorytmy_Zaawansowane
 {
@@ -33,10 +34,10 @@ namespace Algorytmy_Zaawansowane
         int spacingLeft = 0;
         int spacingTop = 0;
         bool IsCalculated = false;
-       
+
 
         public GridViewModel GridView { get; set; }
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -45,9 +46,9 @@ namespace Algorytmy_Zaawansowane
             CalculatedBoxView.ItemsSource = CalculatedBoxes.GetBoxList();
             GridView = new GridViewModel();
             this.DataContext = GridView;
-            GridView.IsVisible = false;
-            
+            GridView.IsVisible = false;            
         }
+
 
         private void Open_Click(object sender, RoutedEventArgs e)
         {
@@ -62,24 +63,28 @@ namespace Algorytmy_Zaawansowane
                 string filename = dlg.FileName;
                 System.IO.StreamReader file = new System.IO.StreamReader(filename);
                 string line = file.ReadToEnd();
+                
 
                 if ((BoxesTmp = InputOutput.InitializeList(line)) == null)
+                {
+
                     MessageBox.Show("Errors in text file");
+
+                }
                 else
                 {
                     Boxes.CzyscListe();
                     Boxes.DodajPudelka(BoxesTmp);
                     Boxes.UstawPionowo();
-                   
-                    fillCanvas(MyCanvas,Boxes);
+
+                    fillCanvas(MyCanvas, Boxes);
                     GridView.IsVisible = false;
                     IsCalculated = false;
+                }
 
-                 }
-  
             }
         }
-    
+
 
         private void save_as_Click(object sender, RoutedEventArgs e)
         {
@@ -103,7 +108,7 @@ namespace Algorytmy_Zaawansowane
             if (Boxes.GetBoxNumber() == 0)
                 return;
 
-         
+
 
             Boxes.UstawPionowo();
 
@@ -125,7 +130,7 @@ namespace Algorytmy_Zaawansowane
             FillData(watch.ElapsedMilliseconds.ToString(), tmp);
             SortedBoxes.ListBox = tmp;
             fillCanvas(SortedCanvas, SortedBoxes);
-         
+
         }
         private void FillData(string watchValue, ObservableCollection<Box> tmp)
         {
@@ -134,7 +139,7 @@ namespace Algorytmy_Zaawansowane
             CalculatedBoxes.ReorderBoxList();
 
             // Filling labels
-            int used = Boxes.GetBoxNumber();
+            int used = tmp.Count();
             int unused = UnusedBoxes.GetBoxNumber();
             BoxesLabel.Content = "" + (used + unused);
             BoxesUsedLabel.Content = "" + used;
@@ -144,7 +149,7 @@ namespace Algorytmy_Zaawansowane
 
             // Redrawing graph
             reDrawAll();
-            GridView.IsVisible = true;   
+            GridView.IsVisible = true;
         }
         private void fillCanvas(Canvas X, BoxList boxes)
         {
@@ -164,7 +169,7 @@ namespace Algorytmy_Zaawansowane
                     maxHeight = (int)r.Height;
                 if (r.Width > maxWidth)
                     maxWidth = (int)r.Width;
-                if (spacingLeft+maxWidth > Main.Width)
+                if (spacingLeft + maxWidth > Main.Width)
                 {
                     spacingLeft = 0;
                     spacingTop = maxHeight + 10;
@@ -188,9 +193,9 @@ namespace Algorytmy_Zaawansowane
             spacingTop = 0;
             MyCanvas.Children.Clear();
             SortedCanvas.Children.Clear();
-            fillCanvas(MyCanvas,Boxes);
-            if(IsCalculated==true)
-            fillCanvas(SortedCanvas, SortedBoxes);
+            fillCanvas(MyCanvas, Boxes);
+            if (IsCalculated == true)
+                fillCanvas(SortedCanvas, SortedBoxes);
         }
 
         private void About_Click(object sender, RoutedEventArgs e)

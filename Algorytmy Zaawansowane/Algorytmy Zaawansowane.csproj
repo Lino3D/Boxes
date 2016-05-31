@@ -63,7 +63,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\GridViewModel.cs" />
+    <Page Include="LoadingWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="IODescriptionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -136,6 +143,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\boxesimg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Loading_icon.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
