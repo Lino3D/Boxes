@@ -43,6 +43,7 @@ namespace Algorytmy_Zaawansowane.Classes
             boxHeight = 0;
             boxWidth = 0;
         }
+        
 
 
         public override bool Equals(System.Object obj)

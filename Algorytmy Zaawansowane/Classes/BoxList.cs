@@ -66,7 +66,7 @@ namespace Algorytmy_Zaawansowane.Classes
             if (SortujPoWysokosci)
                 QuicksortHeight(ListBox, 0, ListBox.Count - 1);
             else
-                QuicksortWidht(ListBox, 0, ListBox.Count - 1);
+                  QuicksortWidht(ListBox, 0, ListBox.Count - 1);
         }
 
         public void UstawPionowo()
@@ -86,10 +86,10 @@ namespace Algorytmy_Zaawansowane.Classes
 
             while (i <= j)
             {
-                while (elements.ElementAt(i).Height < pivot.Height)
+                while ( Helper.CompareHeight(pivot,elements.ElementAt(i)))// < pivot.Height)
                     i++;
 
-                while (elements.ElementAt(j).Height > pivot.Height)
+                while (Helper.CompareHeight(elements.ElementAt(j) ,pivot))
                     j--;
 
                 if (i <= j)
@@ -115,10 +115,10 @@ namespace Algorytmy_Zaawansowane.Classes
 
             while (i <= j)
             {
-                while (elements.ElementAt(i).Width < pivot.Width)
+                while (Helper.CompareWidth(pivot,elements.ElementAt(i) ))// && !(elements.ElementAt(i).Width == pivot.Width && elements.ElementAt(i).Height > pivot.Height))
                     i++;
 
-                while (elements.ElementAt(j).Width > pivot.Width)
+                while (Helper.CompareWidth(elements.ElementAt(j) , pivot))// && !(elements.ElementAt(i).Width == pivot.Width && elements.ElementAt(i).Height < pivot.Height))
                     j--;
 
                 if (i <= j)
@@ -135,6 +135,24 @@ namespace Algorytmy_Zaawansowane.Classes
                 QuicksortWidht(elements, left, j);
             if (i < right)
                 QuicksortWidht(elements, i, right);
+        }
+
+
+        private static void BubbleSortWidth(ObservableCollection<Box> elements)
+        {
+            for( int i = 0; i < elements.Count-1; i++)
+            {
+
+                var FoundMin = elements.ElementAt(i);
+                for( int j = i+1; j< elements.Count; j++)
+                {
+                    if( elements.ElementAt(j).Width <= FoundMin.Width && !( elements.ElementAt(j).Width == elements.ElementAt(i).Width && elements.ElementAt(j).Height > elements.ElementAt(i).Height) )
+                    {
+                        var swapindex = j;
+                    }
+                }
+
+            }
         }
     }
 }

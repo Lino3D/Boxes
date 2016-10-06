@@ -120,8 +120,11 @@ namespace Algorytmy_Zaawansowane
 
             A.SortujPudelka(true);
             B.SortujPudelka(false);
-
+            
             var watch = Stopwatch.StartNew();
+
+
+
 
             var tmp = Algorithm.NajdluzszyWspolnyPodciag(A.GetBoxList(), B.GetBoxList());
 
